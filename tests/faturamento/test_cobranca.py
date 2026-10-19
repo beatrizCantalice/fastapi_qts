@@ -28,11 +28,12 @@ def test_processar_cobranca_atividade(
 
 def test_tempo_processamento_cobranca():
     inicio = time.perf_counter()
-    resultado = processar_cobranca(100.0)
+    resultado = processar_cobranca(100.0, "BASICO", 0)
     fim = time.perf_counter()
     tempo_decorrido = fim - inicio
 
-    assert resultado is True
+    # Valida se retornou um número válido (ex: float/int)
+    assert isinstance(resultado, (int, float))
 
     # O tempo deve ser inferior a 100 milissegundos (0.1 segundos) 
     assert tempo_decorrido < 0.1
